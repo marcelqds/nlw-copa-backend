@@ -29,3 +29,4 @@ generator erd {
 
 - npm i @fastify/cors
 
+[Codigo do País](https://countrycode.org/)
