@@ -30,3 +30,16 @@ generator erd {
 - npm i @fastify/cors
 
 [Codigo do País](https://countrycode.org/)
+
+### Efetuando inserções através de Seeds
+- npx prisma db seed
+
+### Validação com Zod
+- npm install zod
+
+### Gerando código com a lib Short Unique Id
+- npm install short-unique-id
+```js
+  const generate = new ShortUniqueId({ length: 6})
+```
+
