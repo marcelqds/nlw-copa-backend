@@ -4,7 +4,7 @@ import cors from '@fastify/cors';
 import { z } from 'zod';
 import { randomUUID } from 'crypto';
 
-const port = 3333;
+const port = process.PORT | 3333;
 
 const prisma = new PrismaClient({
     log: ['query']
@@ -58,3 +58,4 @@ const bootstrap = async () => {
 }
 
 bootstrap();
+
