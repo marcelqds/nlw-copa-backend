@@ -8,7 +8,7 @@
 
 Modelo prisma banco de dados.
 ```prisma
-model Pool {
+model Poll {
   id String @id @default(cuid())
   title String
   code String @unique

@@ -4,7 +4,7 @@ import cors from '@fastify/cors';
 import { z } from 'zod';
 import { randomUUID } from 'crypto';
 
-const port = process.PORT | 3333;
+const port = process.env.PORT || 3333;
 
 const prisma = new PrismaClient({
     log: ['query']
@@ -19,22 +19,22 @@ const bootstrap = async () => {
         origin: true
     });
     
-    fastify.get('/pools/count', async () => {
+    fastify.get('/polls/count', async () => {
 
-        const count = await prisma.pool.count();                
+        const count = await prisma.poll.count();                
 
         return { count };
     });
 
-    fastify.post('/pools', async (request, response) => {
-        const createPoolBody = z.object({
+    fastify.post('/polls', async (request, response) => {
+        const createpollBody = z.object({
             title: z.string(),
         });
 
-        const { title } = createPoolBody.parse(request.body);
+        const { title } = createpollBody.parse(request.body);
         const code = await randomUUID().toUpperCase();
 
-        await prisma.pool.create({
+        await prisma.poll.create({
             data:{
                 title,
                 code,

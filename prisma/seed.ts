@@ -3,6 +3,12 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient();
 
 const main = async () => {
+    // const user1 = await prisma.user.delete({
+    //     where:{
+    //         id: '54a34e5c-5d92-48db-ac37-d2761ddea7f8'
+    //     }
+    // });
+
     const user = await prisma.user.create({
         data:{
             name: 'Primeiro Usuário',
@@ -11,7 +17,7 @@ const main = async () => {
         }
     })
 
-    const pool = await prisma.pool.create({
+    const poll = await prisma.poll.create({
         data:{
             title: 'Primeiro Bolão',
             code: 'PRI123',
@@ -45,9 +51,9 @@ const main = async () => {
 
                     participant:{
                         connect:{
-                            userId_poolId:{
+                            userId_pollId:{
                                 userId: user.id,
-                                poolId: pool.id
+                                pollId: poll.id
                             }
                         }
                     }
